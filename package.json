@@ -20,6 +20,7 @@
   "homepage": "https://github.com/laneymckee/jquery-server-side-calculator#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bulma": "^0.7.5",
     "express": "^4.17.1",
     "jquery": "^3.4.1"
   }

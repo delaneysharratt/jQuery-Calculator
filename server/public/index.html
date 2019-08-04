@@ -7,35 +7,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="vendors/bulma.css">
     <link rel="stylesheet" href="styles/style.css" />
     <title>Server Side Calculator</title>
 </head>
 
 <body>
-    <header>
-        <h1>Server Side Calculator</h1>
-    </header>
 
-    <div>
-        <input id="valueOne" type="number" placeholder="#" />
+    <section class="hero is-small is-primary is-bold">
+        <div class="hero-body has-text-centered">
+            <h1 class="title">Server Side Calculator</h1>
+        </div>
+    </section>
 
-        <button id="add" class="operator">+</button>
-        <button id="subtract" class="operator">-</button>
-        <button id="multiply" class="operator">*</button>
-        <button id="divide" class="operator">/</button>
+    <section class="section">
+        <div class="box">
 
-        <input id="valueTwo" type="number" placeholder="#" />
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <input id="valueOne" class="input" type="number" placeholder="#" />
+                </div>
 
-        <button id="calculate">=</button>
-        <button id="clear">C</button>
-    </div>
+                <div class="column is-narrow">
+                    <button id="add" class="operator button is-dark">+</button>
+                    <button id="subtract" class="operator button is-dark">-</button>
+                    <button id="multiply" class="operator button is-dark">*</button>
+                    <button id="divide" class="operator button is-dark">/</button>
+                </div>
 
-    <div>
-        <h2><span id="answer"></span></h2>
-        <ul id="answerLog">
-            <!-- calculator answer history displayed here -->
-        </ul>
-    </div>
+                <div class="column is-narrow">
+                    <input id="valueTwo" class="input" type="number" placeholder="#" />
+                </div>
+
+                <div class="column is-narrow">
+                    <button id="calculate" class="button is-success">=</button>
+                    <button id="clear" class="button is-warning">C</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+
+        <div class="level">
+            <div class="level-item">
+                <h2 class="title"><span id="answer"></span></h2>
+            </div>
+
+            <div class="level-item">
+                <ul id="answerLog">
+                    <!-- calculator answer history displayed here -->
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
 </body>
 
 </html>
