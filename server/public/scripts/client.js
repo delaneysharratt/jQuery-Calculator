@@ -2,19 +2,51 @@ $(document).ready(handleReady);
 
 function handleReady() {
     console.log('running js');
+    $('.number').on('click', displayEquation)
     $('.operator').on('click', setOperator)
+    $('.operator').on('click', displayEquation)
+    $('#calculate').on('click', setNumberTwo)
     $('#calculate').on('click', calculateAnswer)
     $('#clear').on('click', clearInputs);
 }
 
 let calculations = [];
+let equation = [];
+let numberOne = 0;
+let numberTwo = 0;
 let operator = 'none';
 
 //setting operator for equation (+ - * /)
 function setOperator() {
     console.log('setting operator...');
     operator = $(this).text();
-    console.log(operator);
+    equationDisplay += operator;
+    setNumberOne();
+}
+
+function setNumberOne() {
+    numberOne = equation.join('');
+    console.log('#1:', numberOne);
+    equation = [];
+    console.log(equation);
+}
+
+function setNumberTwo() {
+    numberTwo = equation.join('');
+    console.log('number2:', numberTwo);
+    equation = [];
+    console.log('equation:', equation);
+}
+
+function displayEquation() {
+    let digit = $(this).text();
+    equation.push(digit);
+    console.log('equation:', equation);
+    let equationDisplay = '';
+    for (digit of equation) {
+        equationDisplay += digit;
+        $('#equationDisplay').val(equationDisplay);
+    }
 }
 
 //getting answers back from server
@@ -68,7 +100,6 @@ function renderToDom(equations) {
 
 //clearing the two input values
 function clearInputs() {
-    $('#valueOne').val('');
-    $('#valueTwo').val('');
+    $('#equationDisplay').val('');
     operator = 'none';
 }
