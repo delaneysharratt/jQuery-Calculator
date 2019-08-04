@@ -22,10 +22,10 @@ function answer() {
     console.log('answer is...');
     //get messages from server -- AJAX!
     $.ajax({
-        method: "GET",
-        url: "/answers"
+        method: 'GET',
+        url: '/answers'
     }).then(function (response) {
-        console.log("the answer is:", response);
+        console.log(response);
         renderToDom(response);
     });
 }
@@ -42,8 +42,8 @@ function calculateAnswer() {
     console.log(calculations);
 
     $.ajax({
-        method: "POST",
-        url: "/calculate",
+        method: 'POST',
+        url: '/calculate',
         data: values
     }).then(function (response) {
         console.log(response);
@@ -54,7 +54,8 @@ function calculateAnswer() {
 
 //rendering the equation to the DOM
 function renderToDom(equations) {
-    console.log("rendering...");
+    console.log('rendering...');
+    $('#answerLog').empty();
 
     for (let input of equations) {
         $('#answer').html(input.answer);

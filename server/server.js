@@ -28,8 +28,10 @@ app.get("/answers", (req, res) => {
 app.post('/calculate', (req, res) => {
     console.log('calculating in post', req.body);
     let input = req.body;
-    //store the input in equations
+    //store the updated input in equations
     equations.push(input);
+
+
     for (let input of equations) {
         if (input.operation == '+') {
             console.log('adding...');
@@ -45,6 +47,8 @@ app.post('/calculate', (req, res) => {
             input.answer = input.numberOne / input.numberTwo;
         }
     }
+
+
     console.log('updated calculations', equations);
     //all good servers respond!
     res.sendStatus(201); //CREATED
