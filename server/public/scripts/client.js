@@ -55,6 +55,14 @@ function calculateAnswer() {
 //rendering the equation to the DOM
 function renderToDom(equations) {
     console.log("rendering...");
+
+    for (let input of equations) {
+        $('#answer').html(input.answer);
+
+        $('#answerLog').append(
+            `<li>${input.numberOne} ${input.operation} ${input.numberTwo} = ${input.answer}</li>`
+        );
+    }
 }
 
 //clearing the two input values

@@ -24,10 +24,11 @@ app.get("/answers", (req, res) => {
     res.send(equations);
 });
 
+//calculations in post using inputs from get
 app.post('/calculate', (req, res) => {
     console.log('calculating in post', req.body);
-    //store the item in our inventory
     let input = req.body;
+    //store the input in equations
     equations.push(input);
     for (let input of equations) {
         if (input.operation == '+') {
