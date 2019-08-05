@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
-    <!-- <link rel="stylesheet" href="vendors/bulma.css"> -->
+    <link rel="stylesheet" href="vendors/bulma.css">
     <link rel="stylesheet" href="styles/style.css">
     <title>Server Side Calculator</title>
 </head>
@@ -16,53 +16,87 @@
 
     <section class="hero is-small is-primary is-bold">
         <div class="hero-body has-text-centered">
-            <h1 class="title">Server Side Calculator</h1>
+            <h1 class="title is-uppercase">Server Side Calculator</h1>
         </div>
     </section>
 
     <section class="section">
         <div class="box">
 
-            <input id="equationDisplay" class="input" type="text" placeholder="#" />
-            <button id="clear" class="submit button is-dark">C</button><br>
+            <div class="tile is-ancestor">
+                <div class="tile is-half">
 
-            <button class="number button is-light">7</button>
-            <button class="number button is-light">8</button>
-            <button class="number button is-light">9</button>
-            <button id="add" class="operator button is-dark">+</button><br>
+                    <table class="table is-narrow">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="equationDisplay" class="input" type="text" placeholder="#" />
+                                </td>
+                                <td>
+                                    <button id="clear" class="submit button is-dark">C</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="numberBtn number button is-light">7</button>
+                                    <button class="numberBtn number button is-light">8</button>
+                                    <button class="numberBtn number button is-light">9</button>
+                                </td>
+                                <td>
+                                    <button id="add" class="operator button is-dark">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="numberBtn number button is-light">4</button>
+                                    <button class="numberBtn number button is-light">5</button>
+                                    <button class="numberBtn number button is-light">6</button>
+                                </td>
+                                <td>
+                                    <button id="subtract" class="operator button is-dark">-</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="numberBtn number button is-light">1</button>
+                                    <button class="numberBtn number button is-light">2</button>
+                                    <button class="numberBtn number button is-light">3</button>
+                                </td>
+                                <td>
+                                    <button id="multiply" class="operator button is-dark">*</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="numberBtn number button is-light">0</button>
+                                    <button class="numberBtn number button is-light">.</button>
+                                    <button id="calculate" class="button number is-dark">=</button>
+                                </td>
+                                <td>
+                                    <button id="divide" class="operator button is-dark">/</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-            <button class="number button is-light">4</button>
-            <button class="number button is-light">5</button>
-            <button class="number button is-light">6</button>
-            <button id="subtract" class="operator button is-dark">-</button><br>
+                </div>
 
-            <button class="number button is-light">1</button>
-            <button class="number button is-light">2</button>
-            <button class="number button is-light">3</button>
-            <button id="multiply" class="operator button is-dark">*</button><br>
+                <div class="tile is-vertical">
 
-            <button class="number button is-light">0</button>
-            <button class="number button is-light">.</button>
-            <button id="calculate" class="button is-dark">=</button>
-            <button id="divide" class="operator button is-dark">/</button><br>
+                    <div class="tile">
+                        <h2 class="title"><span id="answer"></span></h2>
 
-        </div>
-    </section>
+                    </div>
+                    <div class="tile">
+                        <ul id="answerLog">
+                            <!-- calculator answer history displayed here -->
+                        </ul>
+                    </div>
 
-    <section class="section">
-
-        <div class="level">
-            <div class="level-item">
-                <h2 class="title"><span id="answer"></span></h2>
+                </div>
             </div>
 
-            <div class="level-item">
-                <ul id="answerLog">
-                    <!-- calculator answer history displayed here -->
-                </ul>
-            </div>
         </div>
-
     </section>
 
 </body>

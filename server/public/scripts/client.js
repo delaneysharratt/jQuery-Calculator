@@ -2,7 +2,7 @@ $(document).ready(handleReady);
 
 function handleReady() {
     console.log('running js');
-    $('.number').on('click', displayEquation)
+    $('.numberBtn').on('click', displayEquation)
     $('.operator').on('click', setNumberOne)
     $('.operator').on('click', setOperator)
     $('#calculate').on('click', setNumberTwo)
@@ -10,11 +10,10 @@ function handleReady() {
     $('#clear').on('click', clearInputs);
 }
 
-let calculations = [];
 let equation = [];
 let equationDisplay = '';
-let numberOne = 0;
-let numberTwo = 0;
+let numberOne = '';
+let numberTwo = '';
 let operator = '';
 
 //setting operator for equation (+ - * /)
@@ -25,12 +24,14 @@ function setOperator() {
     $('#equationDisplay').val(equationDisplay);
 }
 
+//setting numberOne w/ current values in input display
 function setNumberOne() {
     numberOne = equation.join('');
     console.log('#1:', numberOne);
     equation = [];
 }
 
+//setting numberTwo w/ input values after operator set
 function setNumberTwo() {
     numberTwo = equation.join('');
     console.log('#2:', numberTwo);
@@ -39,6 +40,7 @@ function setNumberTwo() {
 
 }
 
+//adds each button clicked into input display
 function displayEquation() {
     let digit = $(this).text();
     equation.push(digit);
@@ -67,9 +69,8 @@ function calculateAnswer() {
         operation: operator,
         numberTwo: numberTwo
     }
-    calculations.push(values)
-    console.log(calculations);
 
+    //sending equation for calculation in server
     $.ajax({
         method: 'POST',
         url: '/calculate',
@@ -95,11 +96,11 @@ function renderToDom(equations) {
     }
 }
 
-//clearing the two input values
+//clearing all values for next calculation
 function clearInputs() {
     $('#equationDisplay').val('');
     equationDisplay = '';
-    numberOne = 0;
-    numberTwo = 0;
+    numberOne = '';
+    numberTwo = '';
     operator = 'none';
 }
