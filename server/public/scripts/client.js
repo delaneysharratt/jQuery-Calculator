@@ -3,8 +3,8 @@ $(document).ready(handleReady);
 function handleReady() {
     console.log('running js');
     $('.number').on('click', displayEquation)
+    $('.operator').on('click', setNumberOne)
     $('.operator').on('click', setOperator)
-    $('.operator').on('click', displayEquation)
     $('#calculate').on('click', setNumberTwo)
     $('#calculate').on('click', calculateAnswer)
     $('#clear').on('click', clearInputs);
@@ -12,41 +12,38 @@ function handleReady() {
 
 let calculations = [];
 let equation = [];
+let equationDisplay = '';
 let numberOne = 0;
 let numberTwo = 0;
-let operator = 'none';
+let operator = '';
 
 //setting operator for equation (+ - * /)
 function setOperator() {
     console.log('setting operator...');
     operator = $(this).text();
     equationDisplay += operator;
-    setNumberOne();
+    $('#equationDisplay').val(equationDisplay);
 }
 
 function setNumberOne() {
     numberOne = equation.join('');
     console.log('#1:', numberOne);
     equation = [];
-    console.log(equation);
 }
 
 function setNumberTwo() {
     numberTwo = equation.join('');
-    console.log('number2:', numberTwo);
+    console.log('#2:', numberTwo);
     equation = [];
-    console.log('equation:', equation);
+    console.log(equationDisplay);
+
 }
 
 function displayEquation() {
     let digit = $(this).text();
     equation.push(digit);
-    console.log('equation:', equation);
-    let equationDisplay = '';
-    for (digit of equation) {
-        equationDisplay += digit;
-        $('#equationDisplay').val(equationDisplay);
-    }
+    equationDisplay += digit;
+    $('#equationDisplay').val(equationDisplay);
 }
 
 //getting answers back from server
@@ -66,9 +63,9 @@ function answer() {
 function calculateAnswer() {
     console.log('calculating answer...');
     let values = {
-        numberOne: $('#valueOne').val(),
+        numberOne: numberOne,
         operation: operator,
-        numberTwo: $('#valueTwo').val()
+        numberTwo: numberTwo
     }
     calculations.push(values)
     console.log(calculations);
@@ -92,7 +89,7 @@ function renderToDom(equations) {
     for (let input of equations) {
         $('#answer').html(input.answer);
 
-        $('#answerLog').append(
+        $('#answerLog').prepend(
             `<li>${input.numberOne} ${input.operation} ${input.numberTwo} = ${input.answer}</li>`
         );
     }
@@ -101,5 +98,8 @@ function renderToDom(equations) {
 //clearing the two input values
 function clearInputs() {
     $('#equationDisplay').val('');
+    equationDisplay = '';
+    numberOne = 0;
+    numberTwo = 0;
     operator = 'none';
 }
